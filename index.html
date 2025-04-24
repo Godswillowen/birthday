@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.7/css/all.css">
+    <link rel="stylesheet" href="path/to/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel='stylesheet' href='https://cdn-uicons.flaticon.com/2.6.0/uicons-brands/css/uicons-brands.css'>
+    <title>Godswill Owen</title>
+</head>
+<body>
+    <header>
+        <h1 class="animate__animated">Happy Birthday Godswill Owen !</h1>
+        <div class="birthday-person">🎂</div>
+    </header>
+    
+    <div class="container">
+        <div class="surprise-box" id="main-surprise">
+            <h2>You're Invited to Celebrate!</h2>
+            <p>This is your special day, and we're going to make it unforgettable! Get ready for surprises, fun, and lots of happy moments.</p>
+            
+            <div class="cake">
+                <div class="candle"></div>
+                <div class="flame"></div>
+            </div>
+            
+            <p>Click on the cake to light the candles!</p>
+        </div>
+        
+        <div class="surprise-box" id="countdown-box">
+            <h2>Countdown to Party Time!</h2>
+            <div class="countdown">
+                <div class="countdown-item">
+                    <div class="countdown-number" id="days">00</div>
+                    <div class="countdown-label">Days</div>
+                </div>
+                <div class="countdown-item">
+                    <div class="countdown-number" id="hours">00</div>
+                    <div class="countdown-label">Hours</div>
+                </div>
+                <div class="countdown-item">
+                    <div class="countdown-number" id="minutes">00</div>
+                    <div class="countdown-label">Minutes</div>
+                </div>
+                <div class="countdown-item">
+                    <div class="countdown-number" id="seconds">00</div>
+                    <div class="countdown-label">Seconds</div>
+                </div>
+            </div>
+            <p>The celebration starts soon! Don't miss it!</p>
+        </div>
+        
+        <div class="surprise-box" id="gallery-box">
+            <h2>Memory Lane</h2>
+            <p>Here are some wonderful moments</p>
+            
+            <div class="gallery">
+                <img src="Snapchat-760528666.jpg" alt="Happy moment">
+                <img src="FB_IMG_17307640420220616.jpg" alt="Celebration">
+                <img src="Snapchat-638586863_3.jpg" alt="Fun times">
+                <img src="FB_IMG_17306574131707386.jpg" alt="Smiles">
+                <img src="dc270bf4d59bd8629f9a82a089ef9262.gif" alt="Party">
+                <img src="italy.jpeg" alt="Joy">
+            </div>
+        </div>
+        
+        <div class="surprise-box" id="wish-box">
+            <h2>Make a Wish!</h2>
+            <p>This is your special day to dream big and make wishes. Whatever you wish for, may it come true!</p>
+            <a href="#" class="btn" id="wish-btn">Make Your Wish</a>
+        </div>
+    </div>
+    
+    <div class="modal" id="image-modal">
+        <div class="modal-content">
+            <img id="modal-image" src="" alt="Enlarged view">
+        </div>
+    </div>
+    
+    <div class="music-toggle" id="music-toggle">
+        <i class="fas fa-music"></i>
+    </div>
+
+    <div style="text-align: center; margin-bottom: 20px;">
+        <form action="welcome.html">
+            <Button class="game" type="submit">Spin & Win Present <i class="fas fa-gift"></i></Button>
+        </form>
+    </div>
+    
+    <audio id="birthday-music" loop>
+        <source src="Jaydon_Lewis_-_Hope_Amapiano_Remix.mp3" type="audio/mpeg">
+    </audio>
+</body>
+
+
+<script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+<script>
+    // Create confetti
+    function createConfetti() {
+        const colors = ['#FF6B6B', '#4ECDC4', '#FFE66D', '#FF9FF3', '#FECA57'];
+        for (let i = 0; i < 100; i++) {
+            const confetti = document.createElement('div');
+            confetti.className = 'confetti';
+            confetti.style.left = Math.random() * 100 + 'vw';
+            confetti.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
+            confetti.style.animationDelay = Math.random() * 5 + 's';
+            confetti.style.width = Math.random() * 10 + 5 + 'px';
+            confetti.style.height = confetti.style.width;
+            document.body.appendChild(confetti);
+        }
+    }
+    
+    // Show surprise boxes with delay
+    function revealSurprises() {
+        const boxes = document.querySelectorAll('.surprise-box');
+        boxes.forEach((box, index) => {
+            setTimeout(() => {
+                box.classList.add('visible');
+            }, index * 500);
+        });
+    }
+    
+    // Countdown timer
+    function updateCountdown() {
+        // Set your party date here (YYYY, MM-1, DD, HH, MM)
+        const partyDate = new Date(2025, 3, 29, 15, 0);
+        const now = new Date();
+        const diff = partyDate - now;
+        
+        if (diff <= 0) {
+            document.getElementById('countdown-box').innerHTML = `
+                <h2>The Party Is On Now!</h2>
+                <p>Come join the celebration!</p>
+            `;
+            return;
+        }
+        
+        const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+        const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+        const seconds = Math.floor((diff % (1000 * 60)) / 1000);
+        
+        document.getElementById('days').textContent = days.toString().padStart(2, '0');
+        document.getElementById('hours').textContent = hours.toString().padStart(2, '0');
+        document.getElementById('minutes').textContent = minutes.toString().padStart(2, '0');
+        document.getElementById('seconds').textContent = seconds.toString().padStart(2, '0');
+    }
+    
+    // Image gallery modal
+    function setupGallery() {
+        const images = document.querySelectorAll('.gallery img');
+        const modal = document.getElementById('image-modal');
+        const modalImg = document.getElementById('modal-image');
+        
+        images.forEach(img => {
+            img.addEventListener('click', () => {
+                modalImg.src = img.src;
+                modal.classList.add('active');
+            });
+        });
+        
+        modal.addEventListener('click', () => {
+            modal.classList.remove('active');
+        });
+    }
+    
+    // Wish button effect
+    function setupWishButton() {
+        const wishBtn = document.getElementById('wish-btn');
+        
+        wishBtn.addEventListener('click', (e) => {
+            e.preventDefault();
+            createConfetti();
+            wishBtn.innerHTML = '<i class="fas fa-star"></i> Thank you 🥺😘!';
+            wishBtn.style.backgroundColor = 'var(--accent)';
+            wishBtn.style.color = 'var(--dark)';
+            
+            // Play magical sound
+            const audio = new Audio('https://assets.mixkit.co/sfx/preview/mixkit-magical-wooden-fairy-harp-283.mp3');
+            audio.play();
+        });
+    }
+    
+    // Music toggle
+    function setupMusic() {
+        const music = document.getElementById('birthday-music');
+        const toggle = document.getElementById('music-toggle');
+        let isPlaying = false;
+        
+        toggle.addEventListener('click', () => {
+            if (isPlaying) {
+                music.pause();
+                toggle.innerHTML = '<i class="fas fa-music"></i>';
+            } else {
+                music.play();
+                toggle.innerHTML = '<i class="fas fa-pause"></i>';
+            }
+            isPlaying = !isPlaying;
+        });
+    }
+    
+    // Cake interaction
+    function setupCake() {
+        const cake = document.querySelector('.cake');
+        const flame = document.querySelector('.flame');
+        
+        cake.addEventListener('click', () => {
+            flame.style.animation = 'flicker 0.5s infinite alternate';
+            flame.style.opacity = '1';
+            
+            // Play candle sound
+            const audio = new Audio('https://assets.mixkit.co/sfx/preview/mixkit-candle-is-lit-1721.mp3');
+            audio.play();
+            
+            // Show message after delay
+            setTimeout(() => {
+                const message = document.createElement('p');
+                message.textContent = 'Make a wish and blow out the candles!';
+                message.style.textAlign = 'center';
+                message.style.marginTop = '1rem';
+                message.style.fontWeight = 'bold';
+                message.style.color = 'var(--primary)';
+                cake.parentNode.insertBefore(message, cake.nextSibling);
+            }, 1000);
+        });
+    }
+    
+    // Initialize everything
+    window.addEventListener('load', () => {
+        createConfetti();
+        revealSurprises();
+        updateCountdown();
+        setInterval(updateCountdown, 1000);
+        setupGallery();
+        setupWishButton();
+        setupMusic();
+        setupCake();
+        
+        // Easter egg - change background on click
+        document.body.addEventListener('click', () => {
+            document.body.style.background = `linear-gradient(45deg, ${getRandomColor()}, ${getRandomColor()})`;
+        });
+    });
+    
+    function getRandomColor() {
+        const letters = '0123456789ABCDEF';
+        let color = '#';
+        for (let i = 0; i < 6; i++) {
+            color += letters[Math.floor(Math.random() * 16)];
+        }
+        return color;
+    }
+</script>
+</html>

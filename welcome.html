@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prize Wheel Game</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="welcome.css">
+</head>
+<body>
+    <div class="game-container">
+        <h1>Spin & Win!</h1>
+        <h1 style="color: deepskyblue; font-size: medium;">Godswill Owen is +1 🥺🎉🎊</h1>
+        
+        <div class="wheel-container">
+            <canvas id="wheel"></canvas>
+            <div class="pointer"></div>
+        </div>
+        
+        <button id="spin-btn" class="btn spin-btn">
+            <i class="fas fa-sync-alt"></i> SPIN WHEEL
+        </button>
+
+        <a href="https://selar.com/showlove/godswill-owen">
+
+            <button class="btn spin-btn" style="margin-top: 20px; background-color: #25D366;">
+                <i class="fas fa-gift"></i> Send Cash Gift 😩
+            </button>
+
+        </a>
+        
+        <div class="result-container">
+            <p id="result"></p>
+            <div id="prize-code-container" class="hidden">
+                <p>Your Prize Code:</p>
+                <div class="code-display" id="prize-code"></div>
+                <small>Show this code to claim your prize</small>
+            </div>
+            <p id="cooldown-message" class="cooldown-message hidden"></p>
+        </div>
+        
+        <div class="claim-section hidden" id="claim-section">
+            <h3><i class="fas fa-gift"></i> Claim Your Prize</h3>
+            <div class="input-group">
+                <input type="text" id="code-input" placeholder="Enter prize code">
+                <button id="claim-btn" class="btn claim-btn">
+                    <i class="fas fa-check"></i> VALIDATE
+                </button>
+            </div>
+            <p id="claim-status"></p>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

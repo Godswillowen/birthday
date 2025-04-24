@@ -1,0 +1,338 @@
+  :root {
+            --primary: #FF6B6B;
+            --secondary: #4ECDC4;
+            --accent: #FFE66D;
+            --dark: #292F36;
+            --light: #F7FFF7;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Baloo 2', cursive;
+            background-color: var(--light);
+            color: var(--dark);
+            overflow-x: hidden;
+            transition: all 0.5s ease;
+        }
+
+        .confetti {
+            position: fixed;
+            width: 10px;
+            height: 10px;
+            background-color: var(--primary);
+            opacity: 0;
+            z-index: 999;
+            animation: confettiFall 5s linear forwards;
+        }
+
+        @keyframes confettiFall {
+            0% {
+                transform: translateY(-100vh) rotate(0deg);
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(100vh) rotate(360deg);
+                opacity: 0;
+            }
+        }
+
+        header {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            text-align: center;
+            padding: 2rem 1rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        h1 {
+            font-family: 'Pacifico', cursive;
+            font-size: 4rem;
+            margin-bottom: 1rem;
+            text-shadow: 3px 3px 0 rgba(0,0,0,0.1);
+            transform: scale(0);
+            animation: popIn 0.8s 0.5s forwards;
+        }
+
+        @keyframes popIn {
+            0% { transform: scale(0); }
+            80% { transform: scale(1.1); }
+            100% { transform: scale(1); }
+        }
+
+        .birthday-person {
+            width: 150px;
+            height: 150px;
+            background-color: var(--accent);
+            border-radius: 50%;
+            margin: 0 auto;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 4rem;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+            transform: translateY(-50px);
+            opacity: 0;
+            animation: floatUp 1s 1s forwards;
+        }
+
+        @keyframes floatUp {
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        .surprise-box {
+            background: white;
+            border-radius: 20px;
+            padding: 2rem;
+            margin: 2rem 0;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            transform: scale(0.95);
+            opacity: 0;
+            transition: all 0.5s ease;
+        }
+
+        .surprise-box.visible {
+            transform: scale(1);
+            opacity: 1;
+        }
+
+        h2 {
+            color: var(--primary);
+            margin-bottom: 1rem;
+            font-size: 2rem;
+        }
+
+        p {
+            margin-bottom: 1rem;
+            font-size: 1.2rem;
+            line-height: 1.6;
+        }
+
+        .btn {
+            display: inline-block;
+            background: var(--primary);
+            color: white;
+            padding: 1rem 2rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: bold;
+            margin-top: 1rem;
+            transition: all 0.3s;
+            box-shadow: 0 5px 15px rgba(255,107,107,0.4);
+        }
+
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(255,107,107,0.6);
+        }
+
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 1rem;
+            margin: 2rem 0;
+        }
+
+        .gallery img {
+            width: 100%;
+            border-radius: 10px;
+            transition: all 0.3s;
+            cursor: pointer;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        .gallery img:hover {
+            transform: scale(1.05);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+        }
+
+        .modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.8);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+            opacity: 0;
+            pointer-events: none;
+            transition: all 0.3s;
+        }
+
+        .modal.active {
+            opacity: 1;
+            pointer-events: all;
+        }
+
+        .modal-content {
+            max-width: 90%;
+            max-height: 90%;
+        }
+
+        .modal-content img {
+            max-width: 100%;
+            max-height: 80vh;
+            border-radius: 10px;
+        }
+
+        .countdown {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin: 2rem 0;
+        }
+
+        .countdown-item {
+            background: var(--secondary);
+            color: white;
+            padding: 1rem;
+            border-radius: 10px;
+            text-align: center;
+            min-width: 80px;
+        }
+
+        .countdown-number {
+            font-size: 2rem;
+            font-weight: bold;
+        }
+
+        .countdown-label {
+            font-size: 0.8rem;
+            text-transform: uppercase;
+        }
+
+        .music-toggle {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: var(--primary);
+            color: white;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+            z-index: 100;
+        }
+
+        .cake {
+            position: relative;
+            width: 200px;
+            height: 120px;
+            margin: 3rem auto;
+            cursor: pointer;
+        }
+
+        .cake:before {
+            content: "";
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 60px;
+            background: #f9c5d1;
+            border-radius: 10px 10px 0 0;
+        }
+
+        .cake:after {
+            content: "";
+            position: absolute;
+            top: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 40px;
+            height: 40px;
+            background: var(--accent);
+            border-radius: 50%;
+            box-shadow: 
+                40px 0 0 var(--accent),
+                -40px 0 0 var(--accent),
+                20px -20px 0 var(--accent),
+                -20px -20px 0 var(--accent),
+                0 -20px 0 var(--accent);
+        }
+
+        .candle {
+            position: absolute;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 6px;
+            height: 30px;
+            background: white;
+            z-index: 10;
+        }
+
+        .flame {
+            position: absolute;
+            top: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 12px;
+            height: 20px;
+            background: #FFD700;
+            border-radius: 50% 50% 20% 20%;
+            box-shadow: 0 0 15px #FFD700, 0 0 30px #FFA500;
+            opacity: 0;
+            transition: all 0.3s;
+        }
+
+        .cake:hover .flame {
+            opacity: 1;
+            animation: flicker 0.5s infinite alternate;
+        }
+
+        .game{
+            width: 30%;
+            height: 50px;
+            border-radius: 30px;
+            background-color: #FF6B6B;
+            color: #F7FFF7;
+            border: none;
+            font-size: larger;
+        }
+
+        :hover.game{
+            background-color: #f9c5d1;
+        }
+
+        @keyframes flicker {
+            0% { transform: translateX(-50%) scale(1); opacity: 1; }
+            100% { transform: translateX(-50%) scale(1.1); opacity: 0.8; }
+        }
+
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2.5rem;
+            }
+            
+            .birthday-person {
+                width: 100px;
+                height: 100px;
+                font-size: 2.5rem;
+            }
+            
+            .countdown {
+                flex-wrap: wrap;
+            }
+        }
